@@ -6,6 +6,10 @@
 }
 
 body {
+    background-image: https://sun6-22.userapi.com/s/v1/ig2/mbSkegRFxNczA19isdqQXjZl1bV78eu_yrBC_NNnQQ-m4biM6CCts09eih6l1N5OzqoIazow05AcKSoJ45rjcm_X.jpg?size=1263x1263&quality=95&crop=0,0,1263,1263&ava=1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     font-family: 'Arial', sans-serif;
     background-color: #f5f5f5;
     display: flex;
