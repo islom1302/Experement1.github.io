@@ -7,51 +7,64 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
 }
 
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     padding: 20px;
-    text-align: center;
 }
 
 .form-container {
-    background: #ffffff;
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
     font-size: 24px;
     margin-bottom: 20px;
-    color: #333;
+    color: #333333;
 }
 
 .form-group {
     margin-bottom: 20px;
-    text-align: left;
 }
 
 label {
+    font-weight: bold;
     display: block;
     margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
+    color: #555555;
 }
 
-input, textarea {
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #007bff;
 }
 
 textarea {
@@ -60,11 +73,11 @@ textarea {
 
 button {
     background-color: #007bff;
-    color: #fff;
+    color: #ffffff;
     border: none;
-    padding: 12px 24px;
+    padding: 14px 24px;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -75,6 +88,6 @@ button:hover {
 
 #response {
     margin-top: 20px;
-    color: green;
-    font-size: 18px;
+    font-size: 16px;
 }
+
