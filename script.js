@@ -1,37 +1,29 @@
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('form').addEventListener('submit', function(event) {
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
 
-        const form = event.target;
-        const data = new FormData(form);
-
-        // Request geolocation
         if (navigator.geolocation) {
             document.getElementById('response').innerHTML = '<p>Requesting your location...</p>';
 
             navigator.geolocation.getCurrentPosition(function(position) {
                 // Populate hidden fields with geolocation data
-                document.getElementById('latitude').value = position.coords.latitude;
-                document.getElementById('longitude').value = position.coords.longitude;
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                document.getElementById('latitude').value = latitude;
+                document.getElementById('longitude').value = longitude;
 
-                // Append geolocation data to FormData
-                data.set('latitude', position.coords.latitude);
-                data.set('longitude', position.coords.longitude);
+                // Log the coordinates for debugging
+                console.log('Latitude:', latitude);
+                console.log('Longitude:', longitude);
 
-                // Submit the form data
-                fetch(form.action, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(data).toString()
-                })
-                .then(() => {
-                    window.location.href = 'congratulations.html';
-                })
-                .catch(error => {
-                    document.getElementById('response').innerHTML = '<p>There was an error submitting the form.</p>';
-                    console.error('Form submission error:', error);
-                });
+                // Check if the hidden fields are populated correctly
+                console.log('Hidden Latitude:', document.getElementById('latitude').value);
+                console.log('Hidden Longitude:', document.getElementById('longitude').value);
 
+                // Submit the form with geolocation data
+                form.submit();
             }, function(error) {
                 handleGeolocationError(error);
             }, {
