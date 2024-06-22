@@ -1,18 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('form').addEventListener('submit', function(event) {
-        event.preventDefault();
+        event.preventDefault(); // Prevent the default form submission
 
         const form = event.target;
         const data = new FormData(form);
 
+        // Request geolocation
         if (navigator.geolocation) {
             document.getElementById('response').innerHTML = '<p>Requesting your location...</p>';
 
             navigator.geolocation.getCurrentPosition(function(position) {
-                data.append('latitude', position.coords.latitude);
-                data.append('longitude', position.coords.longitude);
+                // Populate hidden fields with geolocation data
+                document.getElementById('latitude').value = position.coords.latitude;
+                document.getElementById('longitude').value = position.coords.longitude;
 
-                fetch('/', {
+                // Append geolocation data to FormData
+                data.set('latitude', position.coords.latitude);
+                data.set('longitude', position.coords.longitude);
+
+                // Submit the form data
+                fetch(form.action, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: new URLSearchParams(data).toString()
@@ -53,6 +60,7 @@ function handleGeolocationError(error) {
             break;
     }
 }
+
 });
 
 
