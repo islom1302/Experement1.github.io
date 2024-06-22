@@ -8,17 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('response').innerHTML = '<p>Requesting your location...</p>';
 
             navigator.geolocation.getCurrentPosition(function(position) {
-                // Populate hidden fields with geolocation data
                 const latitude = position.coords.latitude;
                 const longitude = position.coords.longitude;
+
+                // Populate hidden fields with geolocation data
                 document.getElementById('latitude').value = latitude;
                 document.getElementById('longitude').value = longitude;
 
-                // Log the coordinates for debugging
+                // Log the coordinates and hidden fields for debugging
                 console.log('Latitude:', latitude);
                 console.log('Longitude:', longitude);
-
-                // Check if the hidden fields are populated correctly
                 console.log('Hidden Latitude:', document.getElementById('latitude').value);
                 console.log('Hidden Longitude:', document.getElementById('longitude').value);
 
@@ -52,8 +51,6 @@ function handleGeolocationError(error) {
             break;
     }
 }
-
-});
 
 
 
